@@ -58,8 +58,46 @@ input, button {
 .tree-item { display: block; padding: 6px; cursor: pointer; border-radius: 4px; }
 .tree-item:hover { background: rgba(127,127,127,0.15); }
 .tree-folder { font-weight: 600; }
+.tree-row { display: flex; align-items: center; gap: 4px; min-width: 0; }
+.tree-row .tree-item {
+  flex: 1 1 auto;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.file-delete-btn {
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: #8c959f;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.file-delete-btn:hover {
+  color: #cf222e;
+  border-color: rgba(207, 34, 46, 0.35);
+  background: rgba(207, 34, 46, 0.08);
+}
+.file-delete-btn svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
 .nested { margin-left: 14px; }
 .search-item { padding: 8px; border-bottom: 1px solid var(--border); cursor: pointer; }
+
+.markdown-body pre {
+  position: relative;
+}
 
 .copy-btn {
   position: absolute;
@@ -67,9 +105,12 @@ input, button {
   right: 8px;
   font-size: 12px;
   padding: 4px 8px;
+  z-index: 1;
 }
 
 @media (max-width: 900px) {
+  .controls { flex-wrap: wrap; }
+  .controls input[type="search"] { width: 100%; }
   .app-grid { grid-template-columns: 1fr; }
   .panel { border-right: none; border-bottom: 1px solid var(--border); }
 }

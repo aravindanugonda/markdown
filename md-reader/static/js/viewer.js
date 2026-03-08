@@ -1,6 +1,9 @@
 const viewerEl = document.getElementById('viewer');
+const viewerHeaderEl = document.getElementById('viewerHeader');
 const searchInput = document.getElementById('searchInput');
 const searchResults = document.getElementById('searchResults');
+const uploadBtn = document.getElementById('uploadBtn');
+const uploadInput = document.getElementById('uploadInput');
 const themeToggle = document.getElementById('themeToggle');
 
 window.loadMarkdown = async function loadMarkdown(path) {
@@ -11,13 +14,18 @@ window.loadMarkdown = async function loadMarkdown(path) {
 };
 
 function attachCopyButtons() {
-  document.querySelectorAll('#viewer pre').forEach((pre) => {
+  document.querySelectorAll('#viewer pre code').forEach((codeEl) => {
+    const pre = codeEl.closest('pre');
+    if (!pre || pre.dataset.copyReady === 'true') return;
+    pre.dataset.copyReady = 'true';
+
     const button = document.createElement('button');
     button.className = 'copy-btn';
     button.type = 'button';
     button.textContent = 'Copy';
     button.addEventListener('click', () => {
-      navigator.clipboard.writeText(pre.innerText).then(() => {
+      const source = codeEl.textContent || '';
+      navigator.clipboard.writeText(source).then(() => {
         button.textContent = 'Copied';
         setTimeout(() => (button.textContent = 'Copy'), 1000);
       });
@@ -25,6 +33,35 @@ function attachCopyButtons() {
     pre.appendChild(button);
   });
 }
+
+uploadBtn?.addEventListener('click', () => uploadInput?.click());
+
+uploadInput?.addEventListener('change', async () => {
+  const files = Array.from(uploadInput.files || []);
+  if (!files.length) return;
+
+  const formData = new FormData();
+  for (const file of files) formData.append('files', file);
+
+  const currentPath = typeof window.getCurrentTreePath === 'function' ? window.getCurrentTreePath() : '';
+  if (currentPath) formData.append('path', currentPath);
+
+  const response = await fetch('/api/upload', { method: 'POST', body: formData });
+  const data = await response.json();
+  uploadInput.value = '';
+
+  if (!response.ok) {
+    alert(data.error || 'Upload failed');
+    return;
+  }
+
+  if (typeof window.refreshTree === 'function') await window.refreshTree();
+  const [firstUploaded] = data.uploaded || [];
+  if (firstUploaded) {
+    viewerHeaderEl.textContent = firstUploaded;
+    await window.loadMarkdown(firstUploaded);
+  }
+});
 
 let debounce;
 searchInput?.addEventListener('input', () => {

@@ -27,7 +27,7 @@ class MarkdownRenderer:
         except Exception:
             lexer = TextLexer()
 
-        formatter = HtmlFormatter(cssclass="codehilite", nowrap=False)
+        formatter = HtmlFormatter(nowrap=True, noclasses=True)
         return highlight(code, lexer, formatter)
 
     def render(self, markdown_text: str) -> str:

@@ -1,0 +1,8 @@
+md-reader/venv
+md-reader/docs
+
+md-reader/.index
+
+md-reader/__pycache__
+md-reader/*/__pycache__
+
