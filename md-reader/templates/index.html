@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block content %}
+<main class="app-grid">
+  <aside class="panel explorer-panel">
+    <h2>Files</h2>
+    <div id="tree"></div>
+    <h3>Search Results</h3>
+    <div id="searchResults"></div>
+  </aside>
+  <section class="panel viewer-panel">
+    {% include "viewer.html" %}
+  </section>
+</main>
+{% endblock %}

@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Local Markdown Reader</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/github-markdown.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <h1>Local Markdown Reader</h1>
+    <div class="controls">
+      <input id="searchInput" type="search" placeholder="Search markdown..." />
+      <button id="themeToggle" type="button">Toggle Theme</button>
+    </div>
+  </header>
+  {% block content %}{% endblock %}
+  <script src="{{ url_for('static', filename='js/explorer.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/viewer.js') }}"></script>
+</body>
+</html>
