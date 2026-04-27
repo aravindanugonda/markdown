@@ -9,3 +9,26 @@ md-reader/*/__pycache__
 # Application runtime files
 app.log
 .app.pid
+
+# Ollama chat sessions and memory
+ollama-chat/sessions
+ollama-chat/__pycache__
+ollama-chat/*/__pycache__
+ollama-chat/venv
+
+# Ollama chat files
+.ollama_chat.pid
+ollama_chat.log
+
+# Environment variables
+.env
+.env.local
+!.env.example
+
+# Temporary files
+*.tmp
+*.temp
+*~
+*.swp
+*.swo
+.DS_Store
