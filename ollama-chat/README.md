@@ -8,7 +8,7 @@ A Flask web application that brings your `ask_cloud.sh` CLI chat tool to the bro
 - **User Memory**: Automatic extraction and persistence of learned facts about you
 - **File Attachments**: Include file content as context in your prompts
 - **Conversation Export**: Save conversations as Markdown files directly to `md-reader/docs/`
-- **Multiple Models**: Quick toggle between Minimax M2.5 and Gemma3 27B, or enter any custom model
+- **Multiple Models**: Quick toggle between Minimax M2.5 and Gemma4 31B, or enter any custom model
 - **Think Block Stripping**: Automatically removes `<think>...</think>` reasoning blocks from responses
 - **Markdown Rendering**: Assistant responses render as formatted Markdown with syntax highlighting
 

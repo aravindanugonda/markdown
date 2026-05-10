@@ -146,7 +146,7 @@ cd ..
 Example with custom models:
 ```
 OLLAMA_API_KEY=sk_...
-DEFAULT_MODEL=gemma3:27b-cloud
+DEFAULT_MODEL=gemma4:31b-cloud
 EXTRACTION_MODEL=ministral-3:3b-cloud
 ```
 

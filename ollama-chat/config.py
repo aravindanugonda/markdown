@@ -15,7 +15,7 @@ DEFAULT_MODEL = "minimax-m2.5:cloud"
 EXTRACTION_MODEL = "ministral-3:3b-cloud"
 MODEL_SHORTCUTS = {
     "m": "minimax-m2.5:cloud",
-    "g": "gemma3:27b-cloud",
+    "g": "gemma4:31b-cloud",
 }
 
 OLLAMA_API_URL = "https://ollama.com/api/chat"

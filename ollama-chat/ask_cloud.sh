@@ -29,7 +29,7 @@ while getopts ":m:a:p:s:u:e:h" opt; do
       # Model selection
       case $OPTARG in
         m) MODEL="minimax-m2.5:cloud" ;;
-        g) MODEL="gemma3:27b-cloud" ;;
+        g) MODEL="gemma4:31b-cloud" ;;
         *) MODEL=$OPTARG ;;
       esac
       ;;
